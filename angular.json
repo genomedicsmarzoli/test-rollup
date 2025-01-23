@@ -1,0 +1,155 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "core",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": {
+              "base": "dist/app"
+            },
+            "index": "src/index.html",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/assets",
+              "src/.htaccess",
+              {
+                "glob": "**/*",
+                "input": "./projects/shared/src/assets/",
+                "output": "./assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./src/assets/",
+                "output": "./assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/monaco-editor/min/vs",
+                "output": "./assets/monaco/min/vs"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/monaco-editor/min-maps/vs",
+                "output": "./assets/monaco/min-maps/vs"
+              }
+            ],
+            "styles": [
+            ],
+            "scripts": [
+            ],
+            "allowedCommonJsDependencies": [
+              "flat",
+              "file-saver",
+              "d3-cloud",
+              "d3",
+              "crypto-js",
+              "devextreme",
+              "devextreme-angular",
+              "jszip",
+              "crypto-js",
+              "devextreme-quill",
+              "devexpress-diagram",
+              "devexpress-gantt",
+              "devextreme-showdown",
+              "venn.js",
+              "leaflet-lasso",
+              "jspdf",
+              "raf",
+              "core-js",
+              "rgbcolor",
+              "sql-formatter",
+              "moment",
+              "chroma-js",
+              "ts-md5",
+              "pusher-js",
+              "html2canvas",
+              "leaflet",
+              "leaflet.markercluster",
+              "luxon",
+              "nearley",
+              "showdown",
+              "jspdf-autotable"
+            ],
+            "browser": "src/main.ts"
+          },
+          "configurations": {
+            "development": {
+              "extractLicenses": false,
+              "sourceMap": true,
+              "optimization": false,
+              "outputHashing": "all",
+              "namedChunks": true
+            },
+            "production": {
+              "fileReplacements": [
+              ],
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "50mb",
+                  "maximumError": "200mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
+                }
+              ],
+              "serviceWorker": "ngsw-config.json"
+            },
+            "hmr": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hmr.ts"
+                }
+              ]
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "app:build"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false,
+    "cache": {
+      "enabled": true,
+      "path": ".angular/cache",
+      "environment": "all"
+    }
+  }
+}

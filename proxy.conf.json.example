@@ -1,0 +1,36 @@
+{
+  "/api": {
+    "target": "http://corestack-api",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
+
+/* *** LOCALE *** */
+
+{
+  "/api": {
+    "target": "http://localhost:8888/corestack-api/public/",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
+
+/* *** TEST *** */
+
+{
+  "/api": {
+    "target": "http://corestacktest.sviluppo.genomedics.it/api/",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

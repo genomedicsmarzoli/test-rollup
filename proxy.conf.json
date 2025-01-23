@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "http://localhost/corestack-api/public/",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
